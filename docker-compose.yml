@@ -1,0 +1,70 @@
+version: '3'
+services:
+  nginx:
+    container_name: moodle-nginx
+    image: nginx:1.16-alpine
+    networks:
+      - moodle-net
+    ports:
+         - "80:80"
+    restart: always
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ${APP_PATH}:/var/www/html/moodle:rw
+      - ${MOODLE_DATA}:/var/www/moodledata:rw
+    depends_on:
+      - php-fpm
+  php-fpm:
+    build:
+      context: ./php/fpm/7.3
+    container_name: moodle-phpfpm
+    image: ubuntu
+    networks:
+      - moodle-net
+    ports:
+      - "5072:9000"
+    volumes:
+      - ${APP_PATH}:/var/www/html/moodle:rw
+      - ${MOODLE_DATA}:/var/www/moodledata:rw
+    restart: always
+  mysql:
+    container_name: moodle-mysql
+    image: mysql:5.7
+    networks:
+      - moodle-net
+    ports:
+      - "5073:3306"
+    restart: always
+    environment:
+
+      MYSQL_ROOT_PASSWORD: root
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: moodle-phpmyadmin
+    environment:
+     - PMA_ARBITRARY=1
+    restart: always
+    ports:
+     - "5074:80"
+    volumes:
+      - ./upload/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    depends_on:
+      - mysql
+    networks:
+      - moodle-net
+  mailhog:
+    image: mailhog/mailhog
+    container_name: moodle-mailhog
+    networks:
+      - moodle-net
+    restart: always
+    ports:
+         - "5075:1025"
+         - "5076:8025"
+        
+
+networks:
+  moodle-net:
+    driver: bridge
+
+
