@@ -17,7 +17,7 @@ Additional Packages : git vim net-tools
 MOODLE application URL: http://localhost
 
 
-PORTS:
+                               PORTS:
                                  NGINX: 80
                                  MYSQL: 5073
                                  PHPMYADMIN: 5074
