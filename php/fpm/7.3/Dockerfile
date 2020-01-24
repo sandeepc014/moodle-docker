@@ -8,11 +8,7 @@ RUN apt-get update -y\
         apt-utils locales software-properties-common \
     && locale-gen en_US.UTF-8 \
     && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 \
-    && LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php \
-    && apt-get update --fix-missing \
-    && apt-get update -y \ 
-    && apt-get update --fix-missing \
-    && apt-get update -y \
+    && add-apt-repository -y ppa:ondrej/php \
     && DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends --no-install-suggests -y \
         curl git unzip ntp imagemagick file libfile-mimeinfo-perl \
         php7.3-fpm php7.3-cli php7.3-gd php7.3-curl php7.3-dev php7.3-mbstring php7.3-readline \
