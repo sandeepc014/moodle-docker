@@ -17,7 +17,7 @@ services:
   php-fpm:
     build:
       context: ./php/fpm/7.3
-    container_name: moodle-phpfpm
+    container_name: moodle-phpfp7.37.37.37.37.37.37.3m
     image: ubuntu
     networks:
       - moodle-net
