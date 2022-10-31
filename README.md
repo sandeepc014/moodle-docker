@@ -8,8 +8,8 @@ This documentation provides information on how to clone MOODLE environment into 
 Package Installed on Docker images:
 
 
-Server OS : Ubuntu 18.04.3 LTS
-PHP Version : PHP 7.3.10
+Server OS : Ubuntu 22.04.1 LTS
+PHP Version : PHP 8.0
 MySQL Version :  5.7.27
 Additional Packages : git vim net-tools 
 
@@ -117,9 +117,9 @@ D:\moodle-docker
                         
 12.  Once import database into the phpmyadmin with MOODLE label and type below URL in your browser follow moodle installation process till app gets installed
                    
-                                  EEP Application URL: http://192.168.99.100
-                                  EEP PHP MY ADMIN: http://192.168.99.100:5074
-                                  EEP MAILHOG:  http://http://192.168.99.100:5076
+                                  Application URL: http://192.168.99.100
+                                  PHP MY ADMIN: http://192.168.99.100:5074
+                                  MAILHOG:  http://http://192.168.99.100:5076
                      
 
 14.  How to share folder in Virtual box if project folders are exist in other drive
