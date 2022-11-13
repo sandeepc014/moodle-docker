@@ -24,7 +24,7 @@ services:
     ports:
       - "5072:9000"
     volumes:
-      - ${APP_PATH}:/var/www/html/moodle:rw
+      - ${APPP_PATH}:/var/www/html/moodle:rw
       - ${MOODLE_DATA}:/var/www/moodledata:rw
     restart: always
   mysql:
